@@ -12,7 +12,7 @@
     $cientificos = $conexion->obtenerCientificos(); 
     $sitiosInteres = $conexion->obtenerSitiosInteres(1);
 
-    $user=null;
+    $user = null;
 
     if (isset($_SESSION['nombreUsuario'])) {
         $user = $conexion->getUser($_SESSION['nombreUsuario']);
@@ -20,6 +20,6 @@
 
     $conexion->cerrarConexion();
 
-    echo $twig->render('portada.html', ['cientificos' => $cientificos, 'sitiosInteres' => $sitiosInteres, 'user' => $user]);
 
+    echo $twig->render('portada.html', ['cientificos' => $cientificos, 'sitiosInteres' => $sitiosInteres, 'user' => $user]);
 ?>
