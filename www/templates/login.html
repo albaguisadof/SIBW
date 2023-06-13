@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+    {% block titulo %}
+       Iniciar sesión
+    {% endblock %}
+    {% block css %}
+    <link href="css/login.css" rel="stylesheet" type="text/css">
+    {% endblock %}
+    {% block principal %}
+    <h2>Iniciar sesión</h2>
+        <form action="login.php" method="post">
+            Nombre: <input type="text" name="nombre" /><br>
+            Contraseña: <input type="password" name="contraseña" /><br>
+            <input type="submit" value="Iniciar sesión" />
+        </form>
+        <a href="../registro.php">¿Aún no estas registrado?</a>
+  {% endblock %}

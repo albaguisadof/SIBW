@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+    {% block titulo %}
+       Listado cientificos
+    {% endblock %}
+    {% block principal %}
+    <h2>Listado de cientificos</h2>
+        {% for cientifico in cientificos %}
+        <div class="listado">
+            <p >{{ cientifico.nombre }},{{  cientifico.lugar_nacimiento }},{{ cientifico.fecha_nacimiento }}  - {{  cientifico.lugar_muerte }},{{ cientifico.fecha_muerte }} </p>
+            <p >{{ cientifico.texto }}</p>
+            {% if cientifico.publicado %}
+            <p> Estado: Publicado</p>
+            {% else %}
+            <p> Estado: No publicado</p>
+            {% endif %}
+            <form action="eliminarCientifico.php" method="post">
+                <input type="hidden" name="id_cientifico" value="{{ cientifico.id }}">
+                <button type="submit"><ion-icon name="trash-bin-outline"></ion-icon></button>
+            </form>
+            <button type="submit">
+                <a href="../modificarCientifico.php?id={{ cientifico.id }}"><ion-icon name="create-outline"></ion-icon></a>
+            </button>  
+        </div>
+        {% endfor %}     
+  {% endblock %}

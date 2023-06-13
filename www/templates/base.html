@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block titulo %}WOMEN do SCIENCE{% endblock %}</title>
+        <!--Icono de la páguina, se encuentra en la esquina superior derecha-->
+        <link rel="icon" href="imgs/icono.ico" type="image/x-icon">
+        <meta charset="utf-8">
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="js/buscador.js"></script>
+        {% block css %}
+        <link href="css/estilo.css" rel="stylesheet" type="text/css">
+        {% endblock %}
+    </head>
+    <body>
+        {% if not user %}
+        <div id="login">
+            <button id="registro"><a href="../registro.php">Registrase</a></button>
+            <button id="nuevaSesion"><a href="../login.php">Iniciar sesión</a></button>
+        </div>
+        {% else %}
+        <div id="login">
+            {% if user.tipo == "super"  %}
+                <a href="../listadoUsuarios.php"><ion-icon class="icono" name="people-circle-outline"></ion-icon></a>
+            {% endif %}
+            {% if user.tipo == "gestor" or user.tipo == "super"  %}
+                <a href="../nuevoCientifico.php"><ion-icon class="icono" name="person-add-outline"></ion-icon></a>
+                <a href="../listadoCientificos.php"><ion-icon class="icono" name="list-outline"></ion-icon></a>
+            {% endif %}
+            {% if user.tipo == "moderador" or user.tipo == "super" %}
+                <a href="../listadoComentarios.php"><ion-icon class="icono" name="chatbubbles-outline"></ion-icon></a>
+            {% endif %}
+            <a href="../gestionUsuario.php"><ion-icon class="icono" name="person-circle-outline" ></ion-icon></a>
+            <a href="../logout.php"><ion-icon class="icono" name="log-out-outline"></ion-icon></a>
+        </div>
+        {% endif %}
+        <header>
+            <img id="logo" src="imgs/logo.png" alt="Imágen portada" width="200px">
+            <h1><strong><br>WOMEN do SCIENCE</strong></h1>
+            <nav>
+                <button id="uno">Noticias</button>
+                <button id="dos">Investigación</button>
+                <button id="tres"><a href="../index.php">Referentes</a></button> 
+            </nav>
+            <div id="buscador" >
+                {% if user %}
+                    <input type="hidden" id="tipoUser" value="{{ user.tipo }}">
+                {% endif %}
+                {% if not user %}
+                    <input type="hidden" id="tipoUser" value="">
+                {% endif %}
+                <input type="text" id="textBuscar" name="textBuscar"/>
+                <input type="button" id="botonBuscar" value="Buscar" />
+            </div>
+            <div id="busqueda"></div>
+        </header>
+        {% block principal %}
+            <p>Contenido bloque principal</p>
+        {% endblock %}
+        <!--Pie de páguina-->
+        <footer>
+            <p><br>Contacta con nosotros: telf: 78973298749 - mail: WomenDoScience@gmail.com<br>
+            <br>Copyright © 2023 - WOMEN do SIENCE
+            <br>Información legal | Política de privacidad</p>
+        </footer>
+    </body>
+</html>

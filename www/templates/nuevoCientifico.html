@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+    {% block titulo %}
+       Nuevo cientifico
+    {% endblock %}
+    {% block css %}
+    <script src="js/gestionFotos.js"></script>
+    <link href="css/login.css" rel="stylesheet" type="text/css">
+    {% endblock %}
+    {% block principal %}
+    <h2>Añade el científico</h2>
+    <form action="nuevoCientifico.php" method="POST" enctype="multipart/form-data">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre">
+      
+        <label for="fecha_nacimiento">Fecha de nacimiento:</label>
+        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" >
+       
+        <label for="fecha_muerte">Fecha de muerte:</label>
+        <input type="date" id="fecha_muerte" name="fecha_muerte" >
+     
+        <label for="lugar_nacimiento">Lugar de nacimiento:</label>
+        <input type="text" id="lugar_nacimiento" name="lugar_nacimiento" >
+      
+        <label for="lugar_muerte">Lugar de muerte:</label>
+        <input type="text" id="lugar_muerte" name="lugar_muerte">
+     
+        <label for="texto">Biografía:</label>
+        <textarea id="texto" name="texto"></textarea>
+       
+        <label for="link_wiki">Enlace a Wikipedia:</label>
+        <input type="text" id="link_wiki" name="link_wiki" >
+
+        <label for="imagen">Imagen principal:</label>
+        <input type="file" id="imagen" name="imagen">
+
+       
+        <label for="galeria">Imagenes galería:</label>
+        <input type="file" id="galeria" name="galeria[]"><button type="button" id="'+i+'" class="btn_remove">X</button>
+        <div id="extraImages"></div>
+        <button type="button" id="addImage">+</button>
+
+        <label for="hastags">Hastags:</label>
+        <textarea id="hastags" name="hastags"></textarea>
+
+        <label for="publicado">Estado:</label>
+            <select id="publicado" name="publicado">
+                <option value="1">Publicado</option>
+                <option value="0"  selected >No publicado</option>
+            </select>
+ 
+        <button type="submit">Guardar</button>
+      </form>
+      
+        
+  {% endblock %}

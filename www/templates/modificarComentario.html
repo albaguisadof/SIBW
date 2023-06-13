@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+    {% block titulo %}
+       Registro
+    {% endblock %}
+    {% block css %}
+    <link href="css/login.css" rel="stylesheet" type="text/css">
+    {% endblock %}
+    {% block principal %}
+    <h2>Modifica el comentario</h2>
+    <p class="datosAutor">{{ comentario.nombre }} - {{ comentario.fecha }} , {{ comentario.hora }}</p>
+    <p class="texto">{{ comentario.comentario }}</p>
+
+    <form action="modificarComentario.php" method="post">
+        <input type="hidden" name="id" value="{{ comentario.id }}">
+        <label for="text">Modifcar texto:</label>
+        <textarea id="text" name="text">{{ comentario.comentario }}</textarea>
+        <button type="submit">Actualizar comentario</button>
+      </form>
+        
+  {% endblock %}

@@ -1,0 +1,270 @@
+/*Estilo general de la páguina*/
+body{
+    margin: 0px;
+    background-color: rgb(242, 205, 212);
+}
+
+.icono{
+    font-size: 35px;
+}
+
+#moderador{
+    padding-left: 80%;
+    font-size: 20px;
+}
+
+/*Estilo cabecera*/
+header{
+    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-row: minmax(30px, auto);
+    text-align: center;
+    min-width: 400px;
+    min-height: 60px;
+}
+
+#login{
+    padding-left: 90%;
+    padding-top: 10px;
+    background-color: white
+}
+
+h1 {
+    grid-column: 2/11;
+    font: 50px 'Open Sans', 'sans-serif';
+    background-color: white;
+    margin:0px;
+    vertical-align: middle;
+}
+
+
+#logo{
+    grid-column: 1/2;
+    grid-row:1;
+    float: left;
+    background-color: white;
+    margin:0px;
+}
+
+/*Estilo menú principal*/
+nav{
+    grid-column: 1/9;
+    grid-row:2;
+    display: grid; /*Usamos grid layout*/
+    grid-template-columns: repeat(10, 1fr);
+    grid-row: minmax(30px, auto);
+    background-color: rgb(242, 205, 212);
+    opacity: 70%;
+}
+
+#buscador{
+    grid-column: 9/11;
+    grid-row:2;
+    background-color: rgb(242, 205, 212);
+    opacity: 70%;
+}
+
+
+
+button{
+    vertical-align: middle;
+    text-align: center;
+    background-color: white;
+    opacity: 70%;
+    border-color:white ;
+}
+
+button:hover{ /*Establecemos color de reslato cuando el ratón pase por encima*/
+    background-color:  rgb(242, 205, 212);
+}
+
+#uno{
+    grid-column: 1;
+    grid-row:1;
+}
+
+#dos{
+    grid-column: 2;
+    grid-row:1;
+}
+
+#tres{
+    grid-column: 3;
+    grid-row:1;
+}
+
+
+/*Estilo parte central*/
+.centro {
+    display: grid;
+    grid-column: 4;
+    gap: 10px;
+    grid-row: 3;
+}
+
+/*Estilo parte pincipal*/
+main {
+    grid-column: 1/4;
+    grid-row: 1;
+    background-color: white;
+    border-radius: 5px 5px 5px 5px;
+    margin: 20px;
+}
+
+/*Usamos grid layout para la estructura del articulo*/
+article{
+    display:grid;
+    grid-column: 3;
+}
+
+h2{
+    text-align: center;
+    grid-column:1/4;
+}
+
+h3{
+    text-align: center;
+    grid-column:1/4;
+}
+
+#biografia{
+    margin: 20px;
+    text-align: justify;
+    grid-column:1/2;
+}
+
+#fotos{
+    grid-column: 3/4;
+
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    text-align: center;
+    margin:10px;
+}
+
+
+
+/*Estilo menu secundario*/
+menu{
+    display: flex;
+    justify-content:center
+}
+
+a{
+    text-align: center;
+    color:black;
+}
+
+/*Estilo lateral auxiliar*/
+aside{
+    grid-column: 4;
+    grid-row: 1;
+    border-radius: 5px 5px 5px 5px;
+    background-color: white;
+    margin: 20px;
+    margin-left: 0px;
+    text-align: center;
+    min-width: 300px;
+}
+
+/*Estilo pie de páguina*/
+footer {
+    text-align: center;
+    min-height: 100%;
+    background-color: rgb(165, 164, 164);
+    opacity: 70%;
+    color:white;
+}
+
+
+/*Estilo para dispositivos moviles*/
+@media screen and (max-width: 480px) { 
+    /*Modificamos la parte central y principal para que el texto y las imágenes
+    estén en una única columna y se puedan ver bien en ese tamaño de pantalla*/
+    .centro {
+        display: grid;
+        grid-column: 1;
+        grid-template-rows: auto auto;
+    }
+    
+    main {
+        display: grid;
+        grid-column: 1;
+        grid-template-rows: auto auto;
+        background-color: white;
+        border-radius: 5px 5px 5px 5px;
+        margin: 20px;
+    }
+
+    article{
+        display:grid;
+        grid-column: 1;
+        grid-template-rows: auto auto;
+    }
+    
+    h2,h3{
+        text-align: center;
+    }
+    
+    #biografia{
+        margin: 20px;
+        text-align: justify;
+    }
+    
+ 
+    aside{
+        border-radius: 5px 5px 5px 5px;
+        background-color: white;
+        margin: 20px;
+        margin-left: 0px;
+        text-align: center;
+    }
+}
+
+/*Estilo del botón que mostrará los comentarios*/
+#bcomentario{
+    grid-column:4;
+    grid-row: 2;
+    background-color: rgb(255, 245, 246);
+    min-height: 30px;
+    font-weight: bold;
+    float: right;
+}
+
+/*Estilo del panel de comentarios*/
+#panelComentarios{
+    grid-column:4;
+    grid-row: 3;
+    display: none; /*Más tarde lo mostraremos al pulsar el botón correspondiente*/
+    background-color: white;
+    border-radius: 5px 5px 5px 5px;
+    float:right;
+    margin-right:20px;
+    max-width: 300px;
+}
+.datosAutor{
+    font-weight: bold;
+}
+
+.comentario{
+    background-color: rgb(255, 245, 246);
+    margin:10px;
+}
+
+label, input, textarea{
+    display: block;
+    margin:10px;
+}
+
+#enviar{
+    background-color: pink;
+    font-weight: bold;
+}
+
+#botonesComentario{
+    align-items: center;
+    margin: 10px;
+    font-weight: bold;
+}

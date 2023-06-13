@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+    {% block titulo %}
+       Registro
+    {% endblock %}
+    {% block principal %}
+    <h2>Registro de nuevo usuario</h2>
+        <form action="registro.php" method="post">
+            Nombre: <input type="text" name="nombre" /><br>
+            Correo electrónico: <input type="email" name="correo" /><br>
+            Contraseña: <input type="password" name="contraseña" /><br>
+            <input type="submit" value="Registrarse" />
+        </form>
+        <a href="../login.php">¿Tienes ya una cuenta?</a>
+  {% endblock %}

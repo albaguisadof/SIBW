@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+    {% block titulo %}
+       {{ parent() }}- {{cientifico.nombre}}
+    {% endblock %}
+    {% block css %}
+    <link href="css/cientifico.css" rel="stylesheet" type="text/css">
+    <script src="js/cientifico.js" defer></script>
+    {% endblock %}
+    {% block principal %}
+        <!--Parte central con la parte principal junto a lateral auxiliar-->
+        <div class="centro">
+             <!--Dentro de la parte principal tenemos una artículo de la científica junto a su menu-->
+            <main>
+                <article>
+                    {% if user.tipo == "gestor" or user.tipo == "super" %}
+                    <div id="gestor">
+                        <form action="eliminarCientifico.php" method="post">
+                            <input type="hidden" name="id_cientifico" value="{{ cientifico.id }}">
+                            <button type="submit"><ion-icon class="icono" name="trash-bin-outline"></ion-icon></button>
+                        </form>
+                        <button type="submit">
+                            <a href="../modificarCientifico.php?id={{ cientifico.id }}"><ion-icon class="icono" name="create-outline"></ion-icon></a>
+                        </button>    
+                    </div>
+                    {% endif %}
+                    <h2>{{ cientifico.nombre }}</h2>
+                    <h3>{{  cientifico.lugar_nacimiento }},{{ cientifico.fecha_nacimiento }}  - {{  cientifico.lugar_muerte }},{{ cientifico.fecha_muerte }}</h3>
+                    <p><strong>#{{ hastags }}</strong></p>
+                    <p id="biografia">{{ cientifico.texto }}</p>
+                    <section id="fotos">
+                        <img src="{{ cientifico.imagen }}" alt="{{ cientifico.nombre }}" width="150px">
+                        {% for foto in fotos%}
+                            <img src="{{ foto.ruta }}" alt="{{ foto.nombre }}" width="150px">
+                        {% endfor %}    
+                    </section>
+                    
+                </article>
+                <!--Menú seucundario que se encuentra debajo del artículo-->
+                <menu>
+                    <!--Sitio de interés dónde ecncontrar más información de la científica-->
+                    <button> <a href="{{ cientifico.link_wiki }}" target="_blank">Más información</a></button>
+                    <button>Facebook</button>
+                    <button>Twitter</button>
+                    <!--Nos lleva a un formato de impresión-->
+                    <button><a href="../cientifico_imprimir.php?scid={{ cientifico.id }}" target="_blank">Imprimir</a></button>
+                </menu>           
+            </main>
+           <!--lateral auxiliar-->
+            <aside>
+                <p>Sitios de interés<p>
+                {% for enlace in sitiosInteres%}
+                    <li><a href="{{ enlace.ruta }}" target="_blank">{{ enlace.texto }}</a></li>
+                {% endfor %}
+            </aside>
+            <!--Botón para activar los comentarios-->
+            <button id="bcomentario">Comentarios  △</button>
+             <!--Panel de comentarios-->
+            <section id="panelComentarios" data-palabras="{{ prohibidas }}">
+                <!--Registro de comentarios-->
+                <div id ="listaComentarios">
+                    {% for comentario in comentarios %}
+                    <div class="comentario">
+                        <p class="datosAutor">{{ comentario.nombre }} - {{ comentario.fecha }} , {{ comentario.hora }}</p>
+                        <p class="texto">{{ comentario.comentario }}</p>
+                        {% if user.tipo == "moderador" or user.tipo == "super" %}
+                        <div id="moderador">
+                            <form action="eliminarComentario.php" method="post">
+                                <input type="hidden" name="comentarioID" value="{{ comentario.id }}">
+                                <button type="submit"><ion-icon name="trash-bin-outline"></ion-icon></button>
+                            </form>
+                            <button type="submit">
+                                <a href="../modificarComentario.php?id={{ comentario.id }}"><ion-icon name="create-outline"></ion-icon></a>
+                            </button>    
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+                <!--Formulario para nuevos comentarios-->
+                {% if user.tipo == "registrado" or user.tipo == "super" %}
+                <form id="formularioComentario" action="nuevoComentario.php" method="post">
+                    <input type="hidden" name="id" value="{{ cientifico.id }}">
+                    <label for="textoComentario" id="lcomentario">Añade un nuevo comentario:</label>
+                    <textarea id="textoComentario" name="texto"></textarea>
+                    <div id="botonesComentario">
+                        <button type="resert" id="borrador">Limpiar</button>       
+                        <button type="submit" id="enviar"><strong>Enviar</strong></button>   
+                    </div> 
+                {% endif %}             
+                </form>
+            </section>
+        </div> 
+        {% endblock %}

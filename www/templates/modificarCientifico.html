@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+    {% block titulo %}
+       Modificar cientifico
+    {% endblock %}
+    {% block css %}
+    <link href="css/login.css" rel="stylesheet" type="text/css">
+    {% endblock %}
+    {% block principal %}
+    <h2>Modifica el científico</h2>
+    <form action="modificarCientifico.php" method="post">
+        <input type="hidden" name="id" value="{{ cientifico.id }}">
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" value="{{ cientifico.nombre }}">
+       
+        <label for="fecha_nacimiento">Fecha de nacimiento:</label>
+        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" value="{{ cientifico.fecha_nacimiento}}">
+   
+        <label for="fecha_muerte">Fecha de muerte:</label>
+        <input type="date" id="fecha_muerte" name="fecha_muerte" value="{{ cientifico.fecha_muerte }}">
+     
+        <label for="lugar_nacimiento">Lugar de nacimiento:</label>
+        <input type="text" id="lugar_nacimiento" name="lugar_nacimiento" value="{{ cientifico.lugar_nacimiento }}">
+     
+        <label for="lugar_muerte">Lugar de muerte:</label>
+        <input type="text" id="lugar_muerte" name="lugar_muerte" value="{{ cientifico.lugar_muerte }}">
+        
+        <label for="texto">Biografía:</label>
+        <textarea id="texto" name="texto">{{ cientifico.texto }}</textarea>
+       
+        <label for="link_wiki">Enlace a Wikipedia:</label>
+        <input type="text" id="link_wiki" name="link_wiki" value="{{ cientifico.link_wiki }}">
+
+        <label for="imagen">Imagen principal:</label>
+        <input type="text" id="imagen" name="imagen" value="{{ cientifico.imagen }}">
+
+        <label for="hastags">Hastags:</label>
+        <textarea id="hastags" name="hastags">{{ hastags }}</textarea>
+
+        <label for="publicado">Estado:</label>
+            <select id="publicado" name="publicado">
+                <option value="1" {% if cientifico.publicado == true %} selected {% endif %}>Publicado</option>
+                <option value="0" {% if cientifico.publicado == false %} selected {% endif %}>No publicado</option>
+            </select>
+      
+        <button type="submit">Guardar</button>
+      </form>
+      
+        
+  {% endblock %}

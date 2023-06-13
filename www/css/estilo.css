@@ -1,0 +1,204 @@
+/*Estilo general de la páguina*/
+body{
+    margin: 0px;
+    background-color: rgb(242, 205, 212); /*color de fondo*/
+}
+
+#login{
+    padding-left: 85%;
+    padding-top: 10px;
+    background-color: white
+}
+
+.icono{
+    font-size: 35px;
+}
+
+.listado{
+    background-color: rgb(255, 245, 246);
+    margin:10px;
+}
+
+textarea{
+    min-width: 70%;
+    min-height: 40%;
+}
+
+/*Estilo cabecera*/
+header{
+    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr); /*diseño de grid layout*/
+    grid-row: minmax(30px, auto);
+    text-align: center;
+    min-width: 400px;
+    min-height: 60px;
+}
+
+h1 {
+    grid-column: 2/11;
+    font: 50px 'Open Sans', 'sans-serif'; /*fuente del texto*/
+    background-color: white;
+    margin:0px;
+    vertical-align: middle;
+}
+
+
+#logo{
+    grid-column: 1/2;
+    grid-row:1;
+    float: left;
+    background-color: white;
+    margin:0px;
+}
+
+/*Estilo menú principal*/
+nav{
+    grid-column: 1/9;
+    grid-row:2;
+    display: grid; /*Usamos grid layout*/
+    grid-template-columns: repeat(10, 1fr);
+    grid-row: minmax(30px, auto);
+    background-color: rgb(242, 205, 212);
+    opacity: 70%;
+}
+
+#buscador{
+    grid-column: 9/11;
+    grid-row:2;
+    background-color: rgb(242, 205, 212);
+    opacity: 70%;
+}
+
+
+
+button{
+    vertical-align: middle;
+    text-align: center;
+    background-color: white;
+    opacity: 70%;
+    border-color:white ;
+}
+
+button:hover{ /*Establecemos color de reslato cuando el ratón pase por encima*/
+    background-color:  rgb(242, 205, 212);
+}
+
+#uno{
+    grid-column: 1;
+    grid-row:1;
+}
+
+#dos{
+    grid-column: 2;
+    grid-row:1;
+}
+
+#tres{
+    grid-column: 3;
+    grid-row:1;
+}
+
+/*Estilo parte central*/
+.centro {
+    display: grid;  /*Usamos grid layout*/
+    grid-column: 4;
+    gap: 10px;
+    grid-row: 1;
+}
+
+/*Estilo parte pincipal*/
+main {
+    grid-column: 1/4;
+    grid-row: 1;
+    display: grid;  /*Usamos grid layout*/
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(300px, auto);
+    background-color: white;
+    min-width: 500px;
+    border-radius: 5px 5px 5px 5px;
+    margin: 20px;
+}
+
+/*Estilo para cada una de las secciones*/
+section {
+    border-radius: 5px 5px 5px 5px;
+    margin: 20px;
+    display: grid;  /*Usamos grid layout*/
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    align-items: center;
+}
+
+.a{
+    background-color: rgb(236, 193, 247);
+}
+
+.a:hover{
+    background-color: rgb(223, 153, 240);
+}
+
+.b{
+    background-color: rgb(242, 205, 212);
+}
+
+.b:hover{
+    background-color: rgb(247, 181, 193);
+}
+
+.c{
+    background-color: rgb(181, 223, 250);
+}
+
+.c:hover{
+    background-color: rgb(150, 208, 243);
+}
+
+a{
+    text-align: center;
+    color:black;
+}
+
+/*Estilo lateral auxiliar*/
+aside{
+    grid-column: 4;
+    grid-row: 1;
+    border-radius: 5px 5px 5px 5px;
+    background-color: white;
+    min-height: 600px;
+    margin: 20px;
+    margin-left: 0px;
+    min-width: 50px;
+    text-align: center;
+}
+
+/*Estilo pie de páguina*/
+footer {
+    text-align: center;
+    min-height: 100%;
+    background-color: rgb(165, 164, 164);
+    opacity: 70%;
+    color:white;
+}
+
+
+/*Estilo para dispositivos moviles*/
+@media screen and (max-width: 480px) {
+    /*Modificamos la parte central y principal para que cada científica
+    este en una fila nueva y se pueda ver bien en ese tamaño de pantalla*/
+    .centro {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+    }
+    
+    main {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;;
+        background-color: white;
+        border-radius: 5px 5px 5px 5px;
+        margin: 20px;
+    }
+}

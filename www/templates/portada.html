@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+    {% block css %}
+    <link href="css/estilo.css" rel="stylesheet" type="text/css">
+    {% endblock %}
+    {% block principal %}
+        <!--Parte central con la parte principal junto a lateral auxiliar-->
+        <div class="centro">
+            <!--Dentro de la parte principal tenemos una sección con cada científica-->
+            <main>
+                {% for cientifico in cientificos %}
+                    {% if cientifico.publicado == true %}
+                        <section class="b">
+                            <a href="../cientifico.php?scid={{ cientifico.id }}"><img src="{{ cientifico.imagen }}" alt="{{ cientifico.nombre }}" width="150px"></a> 
+                            <a href="../cientifico.php?scid={{ cientifico.id }}">{{ cientifico.nombre }}</a>
+                        </section>
+                    {% endif %}
+                {% endfor %}
+            </main>
+            <!--lateral auxiliar-->
+            <aside>
+                <p>Sitios de interés<p>
+                {% for enlace in sitiosInteres%}
+                    <li><a href="{{ enlace.ruta }}" target="_blank">{{ enlace.texto }}</a></li>
+                {% endfor %}
+            </aside>
+        </div>
+{% endblock %}
